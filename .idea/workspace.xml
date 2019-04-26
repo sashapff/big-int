@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="BIGINT" targetName="big_integer_testing" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fbde2eef-cbfb-4a8e-ace8-ec335e3cb328" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FUSProjectUsageTrigger">
+    <session id="72354917">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="algorithm" value="7" />
+          <entry key="cc" value="8" />
+          <entry key="cpp" value="12" />
+          <entry key="h" value="13" />
+          <entry key="iterator" value="1" />
+          <entry key="new" value="4" />
+          <entry key="txt" value="7" />
+          <entry key="vector" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CMakeLists.txt" value="7" />
+          <entry key="ObjectiveC" value="53" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cpp" value="10141" />
+          <entry key="h" value="854" />
+          <entry key="hpp" value="39" />
+          <entry key="mm" value="25" />
+          <entry key="txt" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CMakeLists.txt" value="10" />
+          <entry key="ObjectiveC" value="11059" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.merge" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/big_integer.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+              <folding>
+                <element signature="e#45#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/big_integer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2645">
+              <caret line="565" lean-forward="true" selection-start-line="565" selection-end-line="565" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#67#133#0" />
+                <element signature="e#135#235#0" />
+                <element signature="e#237#459#0" />
+                <element signature="e#461#741#0" />
+                <element signature="e#743#810#0" />
+                <element signature="e#866#1129#0" />
+                <element signature="e#1127#1216#0" />
+                <element signature="e#1090#2047#0" />
+                <element signature="e#2049#3073#0" />
+                <element signature="e#3075#3237#0" />
+                <element signature="e#3239#3401#0" />
+                <element signature="e#3403#3556#0" />
+                <element signature="e#3558#3935#0" />
+                <element signature="e#3937#4314#0" />
+                <element signature="e#4316#4693#0" />
+                <element signature="e#4695#4842#0" />
+                <element signature="e#4844#4993#0" />
+                <element signature="e#4995#5059#0" />
+                <element signature="e#5061#5204#0" />
+                <element signature="e#5206#5440#0" />
+                <element signature="e#5442#5507#0" />
+                <element signature="e#5509#5609#0" />
+                <element signature="e#5611#5676#0" />
+                <element signature="e#5678#5779#0" />
+                <element signature="e#5781#5862#0" />
+                <element signature="e#5864#5945#0" />
+                <element signature="e#5947#6028#0" />
+                <element signature="e#6030#6111#0" />
+                <element signature="e#6113#6194#0" />
+                <element signature="e#6196#6277#0" />
+                <element signature="e#6279#6360#0" />
+                <element signature="e#6362#6443#0" />
+                <element signature="e#6445#6513#0" />
+                <element signature="e#6515#6583#0" />
+                <element signature="e#6585#7242#0" />
+                <element signature="e#7244#7329#0" />
+                <element signature="e#7331#7756#0" />
+                <element signature="e#7758#7853#0" />
+                <element signature="e#7855#7939#0" />
+                <element signature="e#7941#8025#0" />
+                <element signature="e#8027#8256#0" />
+                <element signature="e#8258#8318#0" />
+                <element signature="e#8373#9081#0" />
+                <element signature="e#9083#9876#0" />
+                <element signature="e#9878#10075#0" />
+                <element signature="e#10077#10267#0" />
+                <element signature="e#10269#10791#0" />
+                <element signature="e#10793#11321#0" />
+                <element signature="e#11323#11587#0" />
+                <element signature="e#11589#12103#0" />
+                <element signature="e#12456#14038#0" />
+                <element signature="e#13663#14419#0" />
+                <element signature="e#15489#15675#0" />
+                <element signature="e#16871#17358#0" />
+                <element signature="e#12705#12883#0" />
+                <element signature="e#12885#12982#0" />
+                <element signature="e#15434#15567#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>32;</find>
+      <find>32)</find>
+      <find>//</find>
+      <find>shr_signed</find>
+      <find>shr_si</find>
+      <find>operator*</find>
+      <find>operator*=</find>
+      <find>EXPECT_EQ</find>
+      <find>to_</find>
+      <find>&gt;&gt;</find>
+      <find>operator&gt;&gt;</find>
+      <find>shr_31</find>
+      <find>string</find>
+      <find>operator%=</find>
+      <find>div_sh</find>
+      <find>to_s</find>
+      <find>to_str</find>
+      <find>mul</find>
+      <find>str</find>
+      <find>div_ro</find>
+      <find>div_mod(</find>
+      <find>div_long</find>
+      <find>digits</find>
+      <find>mul</find>
+      <find>div_mo</find>
+      <find>operator&lt;</find>
+      <find>div_mod</find>
+      <find>div</find>
+      <find>/=</find>
+      <find>my</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>data</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/big_integer.h" />
+        <option value="$PROJECT_DIR$/big_integer_testing.cpp" />
+        <option value="$PROJECT_DIR$/big_integer.hpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/big_integer.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BIGINT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BIGINT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigint" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.big_integer_testing">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="big_integer_testing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BIGINT" TARGET_NAME="big_integer_testing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="BIGINT" RUN_TARGET_NAME="big_integer_testing">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Build All" />
+      <item itemvalue="Application.big_integer_testing" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbde2eef-cbfb-4a8e-ace8-ec335e3cb328" name="Default Changelist" comment="" />
+      <created>1555932395869</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555932395869</updated>
+      <workItem from="1555932397055" duration="7796000" />
+      <workItem from="1556096691044" duration="29859000" />
+      <workItem from="1556203187469" duration="32788000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="70443000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49895614" visible="true" weight="0.2003231" />
+      <window_info id="Structure" order="1" sideWeight="0.50104386" side_tool="true" weight="0.2536349" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3837535" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45518208" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32913166" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.34733894" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.32913166" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32913166" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/big_integer_testing.cpp</url>
+          <line>180</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>a * b</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>res</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(block * this-&gt;data[1])</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(block * this-&gt;data[i])</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((block * this-&gt;data[i])</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(a &gt;&gt; 3)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a &gt;&gt; 3</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a*a</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a*a)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/iterator">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="1557" selection-start-line="1557" selection-end-line="1557" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="2710" selection-start-line="2710" selection-end-line="2710" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gtest/gtest.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="18896" selection-start-line="18896" selection-end-line="18896" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/tclDecls.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6150">
+          <caret line="1503" column="20" selection-start-line="1503" selection-start-column="20" selection-end-line="1503" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/vector">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="944" selection-start-line="944" selection-end-line="944" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/new">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="227" selection-start-line="227" selection-end-line="227" />
+          <folding>
+            <element signature="e#9780#9818#0" expanded="true" />
+            <element signature="e#9988#10021#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gtest/gtest-all.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="3561" selection-start-line="3561" selection-end-line="3561" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/big_integer_testing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="180" column="24" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <marker date="1556302783341" expanded="true" signature="10984:11348" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/big_integer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding>
+            <element signature="e#45#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/big_integer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2645">
+          <caret line="565" lean-forward="true" selection-start-line="565" selection-end-line="565" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#67#133#0" />
+            <element signature="e#135#235#0" />
+            <element signature="e#237#459#0" />
+            <element signature="e#461#741#0" />
+            <element signature="e#743#810#0" />
+            <element signature="e#866#1129#0" />
+            <element signature="e#1127#1216#0" />
+            <element signature="e#1090#2047#0" />
+            <element signature="e#2049#3073#0" />
+            <element signature="e#3075#3237#0" />
+            <element signature="e#3239#3401#0" />
+            <element signature="e#3403#3556#0" />
+            <element signature="e#3558#3935#0" />
+            <element signature="e#3937#4314#0" />
+            <element signature="e#4316#4693#0" />
+            <element signature="e#4695#4842#0" />
+            <element signature="e#4844#4993#0" />
+            <element signature="e#4995#5059#0" />
+            <element signature="e#5061#5204#0" />
+            <element signature="e#5206#5440#0" />
+            <element signature="e#5442#5507#0" />
+            <element signature="e#5509#5609#0" />
+            <element signature="e#5611#5676#0" />
+            <element signature="e#5678#5779#0" />
+            <element signature="e#5781#5862#0" />
+            <element signature="e#5864#5945#0" />
+            <element signature="e#5947#6028#0" />
+            <element signature="e#6030#6111#0" />
+            <element signature="e#6113#6194#0" />
+            <element signature="e#6196#6277#0" />
+            <element signature="e#6279#6360#0" />
+            <element signature="e#6362#6443#0" />
+            <element signature="e#6445#6513#0" />
+            <element signature="e#6515#6583#0" />
+            <element signature="e#6585#7242#0" />
+            <element signature="e#7244#7329#0" />
+            <element signature="e#7331#7756#0" />
+            <element signature="e#7758#7853#0" />
+            <element signature="e#7855#7939#0" />
+            <element signature="e#7941#8025#0" />
+            <element signature="e#8027#8256#0" />
+            <element signature="e#8258#8318#0" />
+            <element signature="e#8373#9081#0" />
+            <element signature="e#9083#9876#0" />
+            <element signature="e#9878#10075#0" />
+            <element signature="e#10077#10267#0" />
+            <element signature="e#10269#10791#0" />
+            <element signature="e#10793#11321#0" />
+            <element signature="e#11323#11587#0" />
+            <element signature="e#11589#12103#0" />
+            <element signature="e#12456#14038#0" />
+            <element signature="e#13663#14419#0" />
+            <element signature="e#15489#15675#0" />
+            <element signature="e#16871#17358#0" />
+            <element signature="e#12705#12883#0" />
+            <element signature="e#12885#12982#0" />
+            <element signature="e#15434#15567#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,3 @@
+/Users/alexandra/cpp/cpp-course/bigint/build/CMakeFiles/rebuild_cache.dir
+/Users/alexandra/cpp/cpp-course/bigint/build/CMakeFiles/edit_cache.dir
+/Users/alexandra/cpp/cpp-course/bigint/build/CMakeFiles/big_integer_testing.dir
