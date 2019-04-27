@@ -17,21 +17,25 @@ big_integer::big_integer(int a) {
     *this = big_integer();
     if (a != 0) {
         data.resize(1);
-        data[0] = static_cast<uint32_t>(a >= 0 ? a : -a);
-        sign = a < 0;
+        data[0] = static_cast<uint32_t>(a >= 0 ? a : 0ll - a);
+        sign = (a < 0);
     }
 }
 
 big_integer::big_integer(std::string const &str) {
+    if (str == "") {
+        *this = big_integer();
+    }
     size_t ind = 0;
+    sign = false;
     if (str[0] == '-' || str[0] == '+') {
         ind++;
     }
     for (; ind < str.length(); ind++) {
-        this->mul_short(10);
+        mul_short(10);
         *this += (str[ind] - '0');
     }
-    sign = str[0] == '-';
+    sign = (str[0] == '-');
 }
 
 big_integer::~big_integer() {
@@ -60,7 +64,7 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
             add(rhs, 0);
         } else {
             big_integer r(rhs);
-            r.sign = !r.sign;
+            r.sign ^= 1;
             if (r <= *this) {
                 sub(r);
             } else {
@@ -72,7 +76,7 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
     } else {
         if (!rhs.sign) {
             big_integer r(rhs);
-            sign = !sign;
+            sign ^= 1;
             if (r >= *this) {
                 r.sub(*this);
                 *this = r;
@@ -83,8 +87,8 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
             }
         } else {
             big_integer r(rhs);
-            sign = !sign;
-            r.sign = !r.sign;
+            sign ^= 1;
+            r.sign ^= 1;
             add(r, 0);
             sign = true;
         }
@@ -94,15 +98,15 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
 
 big_integer &big_integer::operator-=(big_integer const &rhs) {
     big_integer r(rhs);
-    r.sign = !r.sign;
+    r.sign ^= 1;
     *this += r;
     return *this;
 }
 
 big_integer &big_integer::operator*=(big_integer const &rhs) {
-    bool sgn = this->sign;
-    this->mul(rhs);
-    this->sign = sgn ^ rhs.sign;
+    bool sgn = sign;
+    mul(rhs);
+    sign = sgn ^ rhs.sign;
     return *this;
 }
 
@@ -129,7 +133,7 @@ big_integer &big_integer::operator&=(big_integer const &rhs) {
     for (size_t i = 0; i < length; i++) {
         data[i] &= r[i];
     }
-    sign &= r.sign;
+    sign = sign & r.sign;
     to_my_form();
     return *this;
 }
@@ -143,7 +147,7 @@ big_integer &big_integer::operator|=(big_integer const &rhs) {
     for (size_t i = 0; i < length; i++) {
         data[i] |= r[i];
     }
-    sign |= r.sign;
+    sign = sign | r.sign;
     to_my_form();
     return *this;
 }
@@ -184,7 +188,7 @@ big_integer big_integer::operator+() const {
 big_integer big_integer::operator-() const {
     big_integer r(*this);
     if (r.size() != 0) {
-        r.sign = !r.sign;
+        r.sign ^= 1;
     }
     return r;
 }
@@ -195,7 +199,7 @@ big_integer big_integer::operator~() const {
     for (size_t i = 0; i < r.size(); i++) {
         r[i] = ~r[i];
     }
-    r.sign = !r.sign;
+    r.sign ^= 1;
     r.to_my_form();
     return r;
 }
@@ -417,7 +421,7 @@ void big_integer::to_my_form() {
 
 void big_integer::shift_left(int rhs) {
     uint32_t carry = 0;
-    int number = rhs / len;
+    size_t number = rhs / len;
     int small_shift = rhs - number * rhs;
     size_t length = size() + number;
     data.resize(length);
@@ -432,7 +436,7 @@ void big_integer::shift_left(int rhs) {
 }
 
 void big_integer::shift_right(int rhs) {
-    int number = rhs / len;
+    size_t number = rhs / len;
     int small_shift = rhs - number * rhs;
     size_t length = this->size() + number;
     data.resize(length);
@@ -461,12 +465,12 @@ void big_integer::mul(const big_integer &a) {
 
 void big_integer::mul_short(uint32_t a) {
     if (a == 0) {
-        *this = big_integer(0);
+        *this = big_integer();
         return;
     }
     uint32_t multiplier = a;
     uint32_t carry = 0;
-    for (size_t i = 0; i < this->size(); i++) {
+    for (size_t i = 0; i < size(); i++) {
         uint64_t mull = (uint64_t) data[i] * multiplier + carry;
         data[i] = (uint32_t) mull;
         carry = (uint32_t) (mull >> len);

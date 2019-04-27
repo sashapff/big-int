@@ -72,7 +72,7 @@ private:
 
 private:
     std::vector<uint32_t> data;
-    bool sign;
+    bool sign = false;
 };
 
 big_integer operator+(big_integer a, big_integer const& b);

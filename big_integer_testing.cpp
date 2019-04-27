@@ -770,4 +770,3 @@ TEST(correctness, mod_)
 
     EXPECT_TRUE(a % b == c);
 }
-
