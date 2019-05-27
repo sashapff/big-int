@@ -4,10 +4,9 @@
 #include <cstddef>
 #include <iosfwd>
 #include <iostream>
-#include <vector>
+#include "my_vector.h"
 #include <string>
 #include <algorithm>
-using std::vector;
 
 struct big_integer
 {
@@ -18,6 +17,7 @@ struct big_integer
     ~big_integer();
 
     big_integer& operator=(big_integer const& other);
+    big_integer& operator=(int a);
 
     big_integer& operator+=(big_integer const& rhs);
     big_integer& operator-=(big_integer const& rhs);
@@ -71,7 +71,7 @@ private:
     int sub_prefix(big_integer const &b, size_t ind);
 
 private:
-    std::vector<uint32_t> data;
+    my_vector<uint32_t> data;
     bool sign = false;
 };
 

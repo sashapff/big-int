@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 big_integer::big_integer() {
-    data.clear();
+    data.resize(0);
     sign = false;
 }
 
@@ -26,6 +26,7 @@ big_integer::big_integer(std::string const &str) {
     if (str == "") {
         *this = big_integer();
     }
+    *this = big_integer();
     size_t ind = 0;
     sign = false;
     if (str[0] == '-' || str[0] == '+') {
@@ -39,18 +40,22 @@ big_integer::big_integer(std::string const &str) {
 }
 
 big_integer::~big_integer() {
-    data.clear();
+    data.resize(0);
     sign = false;
 }
 
 big_integer &big_integer::operator=(big_integer const &other) {
     if (*this != other) {
-        data.resize(other.size());
-        for (size_t i = 0; i < other.size(); i++) {
-            data[i] = other.data[i];
-        }
+        data = other.data;
         sign = other.sign;
     }
+    return *this;
+}
+
+big_integer &big_integer::operator=(int a) {
+    big_integer q(a);
+    data.copy_on_write();
+    *this = q;
     return *this;
 }
 
@@ -59,11 +64,13 @@ uint32_t &big_integer::operator[](size_t const i) {
 }
 
 big_integer &big_integer::operator+=(big_integer const &rhs) {
+    data.copy_on_write();
     if (!sign) {
         if (!rhs.sign) {
             add(rhs, 0);
         } else {
             big_integer r(rhs);
+            r.data.copy_on_write();
             r.sign ^= 1;
             if (r <= *this) {
                 sub(r);
@@ -76,6 +83,7 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
     } else {
         if (!rhs.sign) {
             big_integer r(rhs);
+            r.data.copy_on_write();
             sign ^= 1;
             if (r >= *this) {
                 r.sub(*this);
@@ -87,6 +95,7 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
             }
         } else {
             big_integer r(rhs);
+            r.data.copy_on_write();
             sign ^= 1;
             r.sign ^= 1;
             add(r, 0);
@@ -97,13 +106,16 @@ big_integer &big_integer::operator+=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator-=(big_integer const &rhs) {
+    data.copy_on_write();
     big_integer r(rhs);
+    r.data.copy_on_write();
     r.sign ^= 1;
     *this += r;
     return *this;
 }
 
 big_integer &big_integer::operator*=(big_integer const &rhs) {
+    data.copy_on_write();
     bool sgn = sign;
     mul(rhs);
     sign = sgn ^ rhs.sign;
@@ -111,6 +123,7 @@ big_integer &big_integer::operator*=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator/=(big_integer const &rhs) {
+    data.copy_on_write();
     bool sgn = sign;
     *this = div_mod(rhs).first;
     sign = sgn ^ rhs.sign;
@@ -118,6 +131,7 @@ big_integer &big_integer::operator/=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator%=(big_integer const &rhs) {
+    data.copy_on_write();
     bool sgn = sign;
     *this = div_mod(rhs).second;
     sign = sgn;
@@ -125,7 +139,9 @@ big_integer &big_integer::operator%=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator&=(big_integer const &rhs) {
+    data.copy_on_write();
     big_integer r(rhs);
+    r.data.copy_on_write();
     r.to_normal_form();
     to_normal_form();
     size_t length = std::max(this->size(), r.size());
@@ -139,7 +155,9 @@ big_integer &big_integer::operator&=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator|=(big_integer const &rhs) {
+    data.copy_on_write();
     big_integer r(rhs);
+    r.data.copy_on_write();
     r.to_normal_form();
     to_normal_form();
     size_t length = std::max(size(), r.size());
@@ -153,7 +171,9 @@ big_integer &big_integer::operator|=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator^=(big_integer const &rhs) {
+    data.copy_on_write();
     big_integer r(rhs);
+    r.data.copy_on_write();
     r.to_normal_form();
     to_normal_form();
     size_t length = std::max(size(), r.size());
@@ -167,6 +187,7 @@ big_integer &big_integer::operator^=(big_integer const &rhs) {
 }
 
 big_integer &big_integer::operator<<=(int rhs) {
+    data.copy_on_write();
     to_normal_form();
     shift_left(rhs);
     to_my_form();
@@ -174,6 +195,7 @@ big_integer &big_integer::operator<<=(int rhs) {
 }
 
 big_integer &big_integer::operator>>=(int rhs) {
+    data.copy_on_write();
     shift_right(rhs);
     if (sign) {
         add(1, 0);
@@ -187,6 +209,7 @@ big_integer big_integer::operator+() const {
 
 big_integer big_integer::operator-() const {
     big_integer r(*this);
+    r.data.copy_on_write();
     if (r.size() != 0) {
         r.sign ^= 1;
     }
@@ -195,6 +218,7 @@ big_integer big_integer::operator-() const {
 
 big_integer big_integer::operator~() const {
     big_integer r(*this);
+    r.data.copy_on_write();
     r.to_normal_form();
     for (size_t i = 0; i < r.size(); i++) {
         r[i] = ~r[i];
@@ -205,20 +229,25 @@ big_integer big_integer::operator~() const {
 }
 
 big_integer &big_integer::operator++() {
+    data.copy_on_write();
     return *this += 1;
 }
 
 big_integer big_integer::operator++(int) {
+    data.copy_on_write();
     big_integer r(*this);
+    r.data.copy_on_write();
     *this += 1;
     return r;
 }
 
 big_integer &big_integer::operator--() {
+    data.copy_on_write();
     return *this -= 1;
 }
 
 big_integer big_integer::operator--(int) {
+    data.copy_on_write();
     big_integer r = *this;
     *this -= 1;
     return r;
@@ -273,6 +302,8 @@ bool operator==(big_integer const &a, big_integer const &b) {
     }
     big_integer x(a);
     big_integer y(b);
+    x.data.copy_on_write();
+    y.data.copy_on_write();
     x.shrink_to_fit();
     y.shrink_to_fit();
     size_t min_len = std::min(x.size(), y.size());
@@ -300,6 +331,8 @@ bool operator!=(big_integer const &a, big_integer const &b) {
 bool operator<(big_integer const &a, big_integer const &b) {
     big_integer x(a);
     big_integer y(b);
+    x.data.copy_on_write();
+    y.data.copy_on_write();
     x.shrink_to_fit();
     y.shrink_to_fit();
     if (x.sign != y.sign) {
@@ -334,6 +367,7 @@ bool operator>=(big_integer const &a, big_integer const &b) {
 std::string to_string(big_integer const &a) {
     std::string res = "";
     big_integer r(a);
+    r.data.copy_on_write();
     while (r != 0) {
         uint64_t t = r.div_short(10).second;
         res = (char) ('0' + t) + res;
@@ -349,8 +383,8 @@ size_t big_integer::size() const {
     return data.size();
 }
 
-uint64_t block = ((uint64_t) 1 << 32);
-int len = 32;
+const uint64_t block = ((uint64_t) 1 << 32);
+const int len = 32;
 
 void big_integer::add(const big_integer &a, size_t pos) {
     uint32_t carry = 0;
@@ -401,6 +435,7 @@ void big_integer::sub(const big_integer &a) {
 }
 
 void big_integer::to_normal_form() {
+    data.copy_on_write();
     if (sign) {
         for (size_t i = 0; i < size(); i++) {
             data[i] = ~data[i];
@@ -410,6 +445,7 @@ void big_integer::to_normal_form() {
 }
 
 void big_integer::to_my_form() {
+    data.copy_on_write();
     if (sign) {
         sub(1);
         for (size_t i = 0; i < size(); i++) {
@@ -420,6 +456,7 @@ void big_integer::to_my_form() {
 }
 
 void big_integer::shift_left(int rhs) {
+    data.copy_on_write();
     uint32_t carry = 0;
     size_t number = rhs / len;
     int small_shift = rhs - number * rhs;
@@ -436,6 +473,7 @@ void big_integer::shift_left(int rhs) {
 }
 
 void big_integer::shift_right(int rhs) {
+    data.copy_on_write();
     size_t number = rhs / len;
     int small_shift = rhs - number * rhs;
     size_t length = this->size() + number;
@@ -453,10 +491,12 @@ void big_integer::shift_right(int rhs) {
 }
 
 void big_integer::mul(const big_integer &a) {
+    data.copy_on_write();
     big_integer ans(0);
     ans.data.resize(std::max(size(), a.size()));
     for (size_t i = 0; i < a.size(); i++) {
         big_integer mull(*this);
+        mull.data.copy_on_write();
         mull.mul_short(a.data[i]);
         ans.add(mull, i);
     }
@@ -464,6 +504,7 @@ void big_integer::mul(const big_integer &a) {
 }
 
 void big_integer::mul_short(uint32_t a) {
+    data.copy_on_write();
     if (a == 0) {
         *this = big_integer();
         return;
@@ -484,6 +525,8 @@ void big_integer::mul_short(uint32_t a) {
 std::pair<big_integer, big_integer> big_integer::div_mod(const big_integer &a) const {
     big_integer v(a);
     big_integer u(*this);
+    v.data.copy_on_write();
+    u.data.copy_on_write();
     v.sign = false;
     u.sign = false;
     if (u < v) {
@@ -513,6 +556,7 @@ std::pair<big_integer, big_integer> big_integer::div_mod(const big_integer &a) c
             r += v.data.back();
         }
         big_integer w(v);
+        w.data.copy_on_write();
         w.mul_short(q);
         if (u.sub_prefix(w, j)) {
             q--;
@@ -526,6 +570,7 @@ std::pair<big_integer, big_integer> big_integer::div_mod(const big_integer &a) c
 }
 
 int big_integer::sub_prefix(big_integer const &b, size_t ind) {
+    data.copy_on_write();
     uint32_t carry = 0;
     for (size_t i = 0; i < b.size(); i++) {
         if (data[ind + i] - carry >= b.data[i]) {
@@ -548,6 +593,7 @@ int big_integer::sub_prefix(big_integer const &b, size_t ind) {
 }
 
 void big_integer::shrink_to_fit() {
+    data.copy_on_write();
     while (!data.empty() && data.back() == 0) {
         data.pop_back();
     }
@@ -560,6 +606,7 @@ std::pair<big_integer, uint64_t> big_integer::div_short(uint32_t a) const {
     uint32_t dividend = a;
     uint64_t carry = 0;
     big_integer r(*this);
+    r.data.copy_on_write();
     for (int i = (int) size() - 1; i >= 0; i--) {
         uint64_t res = ((uint64_t) data[i] + carry * block) / dividend;
         carry = (uint64_t) data[i] - res * dividend;
@@ -576,6 +623,7 @@ bool big_integer::is_zero() const {
     }
     return true;
 }
+
 
 std::ostream &operator<<(std::ostream &s, big_integer const &a) {
     return s << to_string(a);

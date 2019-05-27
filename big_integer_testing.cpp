@@ -7,30 +7,26 @@
 
 #include "big_integer.hpp"
 
-TEST(correctness, two_plus_two)
-{
+TEST(correctness, two_plus_two) {
     EXPECT_EQ(big_integer(2) + big_integer(2), big_integer(4));
-    EXPECT_EQ(big_integer(2) + 2             , 4); // implicit converion from int must work
-    EXPECT_EQ(2              + big_integer(2), 4);
+    EXPECT_EQ(big_integer(2) + 2, 4); // implicit converion from int must work
+    EXPECT_EQ(2 + big_integer(2), 4);
 }
 
-TEST(correctness, default_ctor)
-{
+TEST(correctness, default_ctor) {
     big_integer a;
     big_integer b = 0;
     EXPECT_EQ(a, 0);
     EXPECT_EQ(a, b);
 }
 
-TEST(correctness, ctor_limits)
-{
+TEST(correctness, ctor_limits) {
     big_integer a = std::numeric_limits<int>::min();
     big_integer b = std::numeric_limits<int>::max();
     EXPECT_EQ(a + b, -1);
 }
 
-TEST(correctness, copy_ctor)
-{
+TEST(correctness, copy_ctor) {
     big_integer a = 3;
     big_integer b = a;
 
@@ -38,8 +34,7 @@ TEST(correctness, copy_ctor)
     EXPECT_EQ(b, 3);
 }
 
-TEST(correctness, copy_ctor_real_copy)
-{
+TEST(correctness, copy_ctor_real_copy) {
     big_integer a = 3;
     big_integer b = a;
     a = 5;
@@ -47,8 +42,7 @@ TEST(correctness, copy_ctor_real_copy)
     EXPECT_EQ(b, 3);
 }
 
-TEST(correctness, copy_ctor_real_copy2)
-{
+TEST(correctness, copy_ctor_real_copy2) {
     big_integer a = 3;
     big_integer b = a;
     b = 5;
@@ -56,8 +50,7 @@ TEST(correctness, copy_ctor_real_copy2)
     EXPECT_EQ(a, 3);
 }
 
-TEST(correctness, assignment_operator)
-{
+TEST(correctness, assignment_operator) {
     big_integer a = 4;
     big_integer b = 7;
     b = a;
@@ -65,16 +58,14 @@ TEST(correctness, assignment_operator)
     EXPECT_TRUE(a == b);
 }
 
-TEST(correctness, self_assignment)
-{
+TEST(correctness, self_assignment) {
     big_integer a = 5;
     a = a;
 
     EXPECT_TRUE(a == 5);
 }
 
-TEST(correctness, assignment_return_value)
-{
+TEST(correctness, assignment_return_value) {
     big_integer a = 4;
     big_integer b = 7;
     (a = b) = a;
@@ -83,8 +74,7 @@ TEST(correctness, assignment_return_value)
     EXPECT_TRUE(b == 7);
 }
 
-TEST(correctness, comparisons)
-{
+TEST(correctness, comparisons) {
     big_integer a = 100;
     big_integer b = 100;
     big_integer c = 200;
@@ -99,16 +89,14 @@ TEST(correctness, comparisons)
     EXPECT_TRUE(c >= a);
 }
 
-TEST(correctness, compare_zero_and_minus_zero)
-{
+TEST(correctness, compare_zero_and_minus_zero) {
     big_integer a;
     big_integer b = -a;
 
     EXPECT_TRUE(a == b);
 }
 
-TEST(correctness, add)
-{
+TEST(correctness, add) {
     big_integer a = 5;
     big_integer b = 20;
 
@@ -118,8 +106,7 @@ TEST(correctness, add)
     EXPECT_TRUE(a == 25);
 }
 
-TEST(correctness, add_signed)
-{
+TEST(correctness, add_signed) {
     big_integer a = 5;
     big_integer b = -20;
 
@@ -129,8 +116,7 @@ TEST(correctness, add_signed)
     EXPECT_TRUE(a == -15);
 }
 
-TEST(correctness, add_return_value)
-{
+TEST(correctness, add_return_value) {
     big_integer a = 5;
     big_integer b = 1;
 
@@ -138,8 +124,7 @@ TEST(correctness, add_return_value)
     EXPECT_EQ(a, 7);
 }
 
-TEST(correctness, sub)
-{
+TEST(correctness, sub) {
     big_integer a = 20;
     big_integer b = 5;
 
@@ -149,8 +134,7 @@ TEST(correctness, sub)
     EXPECT_TRUE(a == 15);
 }
 
-TEST(correctness, sub_signed)
-{
+TEST(correctness, sub_signed) {
     big_integer a = 5;
     big_integer b = 20;
 
@@ -163,8 +147,7 @@ TEST(correctness, sub_signed)
     EXPECT_TRUE(a == 85);
 }
 
-TEST(correctness, sub_return_value)
-{
+TEST(correctness, sub_return_value) {
     big_integer a = 5;
     big_integer b = 1;
 
@@ -172,8 +155,7 @@ TEST(correctness, sub_return_value)
     EXPECT_EQ(a, 3);
 }
 
-TEST(correctness, sub_MY)
-{
+TEST(correctness, sub_MY) {
     big_integer a("8821904781");
     big_integer b("7909798440");
     big_integer c("912106341");
@@ -181,8 +163,7 @@ TEST(correctness, sub_MY)
     EXPECT_EQ(a - b, c);
 }
 
-TEST(correctness, mul)
-{
+TEST(correctness, mul) {
     big_integer a = 5;
     big_integer b = 20;
 
@@ -192,8 +173,7 @@ TEST(correctness, mul)
     EXPECT_TRUE(a == 100);
 }
 
-TEST(correctness, mul_signed)
-{
+TEST(correctness, mul_signed) {
     big_integer a = -5;
     big_integer b = 20;
 
@@ -203,8 +183,7 @@ TEST(correctness, mul_signed)
     EXPECT_TRUE(a == -100);
 }
 
-TEST(correctness, mul_return_value)
-{
+TEST(correctness, mul_return_value) {
     big_integer a = 5;
     big_integer b = 2;
 
@@ -212,8 +191,7 @@ TEST(correctness, mul_return_value)
     EXPECT_EQ(a, 20);
 }
 
-TEST(correctness, div_)
-{
+TEST(correctness, div_) {
     big_integer a = 20;
     big_integer b = 5;
     big_integer c = 20;
@@ -228,14 +206,12 @@ TEST(correctness, div_)
     EXPECT_TRUE(c == 0);
 }
 
-TEST(correctness, div_int_min)
-{
+TEST(correctness, div_int_min) {
     big_integer a = std::numeric_limits<int>::min();
     EXPECT_TRUE((a / a) == (a / std::numeric_limits<int>::min()));
 }
 
-TEST(correctness, div_int_min_2)
-{
+TEST(correctness, div_int_min_2) {
     big_integer a = std::numeric_limits<int>::min();
     big_integer b = -1;
     big_integer c = a / b;
@@ -243,8 +219,7 @@ TEST(correctness, div_int_min_2)
     EXPECT_TRUE((c - std::numeric_limits<int>::max()) == 1);
 }
 
-TEST(correctness, div_signed)
-{
+TEST(correctness, div_signed) {
     big_integer a = -20;
     big_integer b = 5;
 
@@ -252,16 +227,15 @@ TEST(correctness, div_signed)
     EXPECT_TRUE(a % b == 0);
 }
 
-TEST(correctness, div_rounding)
-{
+TEST(correctness, div_rounding) {
     big_integer a = 23;
     big_integer b = 5;
 
     EXPECT_TRUE(a / b == 4);
     EXPECT_TRUE(a % b == 3);
 }
-TEST(correctness, div_rounding_negative)
-{
+
+TEST(correctness, div_rounding_negative) {
     big_integer a = 23;
     big_integer b = -5;
     big_integer c = -23;
@@ -273,8 +247,7 @@ TEST(correctness, div_rounding_negative)
     EXPECT_TRUE(c % d == -3);
 }
 
-TEST(correctness, div_return_value)
-{
+TEST(correctness, div_return_value) {
     big_integer a = 100;
     big_integer b = 2;
 
@@ -282,8 +255,7 @@ TEST(correctness, div_return_value)
     EXPECT_EQ(a, 25);
 }
 
-TEST(correctness, unary_plus)
-{
+TEST(correctness, unary_plus) {
     big_integer a = 123;
     big_integer b = +a;
 
@@ -293,24 +265,21 @@ TEST(correctness, unary_plus)
     // &+a;
 }
 
-TEST(correctness, negation)
-{
+TEST(correctness, negation) {
     big_integer a = 666;
     big_integer b = -a;
 
     EXPECT_TRUE(b == -666);
 }
 
-TEST(correctness, negation_int_min)
-{
+TEST(correctness, negation_int_min) {
     big_integer a = std::numeric_limits<int>::min();
     big_integer b = -a;
 
     EXPECT_EQ(std::numeric_limits<int>::max(), b - 1);
 }
 
-TEST(correctness, and_)
-{
+TEST(correctness, and_) {
     big_integer a = 0x55;
     big_integer b = 0xaa;
 
@@ -320,8 +289,7 @@ TEST(correctness, and_)
     EXPECT_TRUE(a == 0);
 }
 
-TEST(correctness, and_signed)
-{
+TEST(correctness, and_signed) {
     big_integer a = 0x55;
     big_integer b = 0xaa;
 
@@ -334,16 +302,14 @@ TEST(correctness, and_signed)
     EXPECT_EQ(big_integer(0x44), c & d);
 }
 
-TEST(correctness, and_return_value)
-{
+TEST(correctness, and_return_value) {
     big_integer a = 7;
 
     (a &= 3) &= 6;
     EXPECT_EQ(a, 2);
 }
 
-TEST(correctness, or_)
-{
+TEST(correctness, or_) {
     big_integer a = 0x55;
     big_integer b = 0xaa;
 
@@ -356,24 +322,21 @@ TEST(correctness, or_)
     EXPECT_EQ(big_integer(0xdd), c | d);
 }
 
-TEST(correctness, or_signed)
-{
+TEST(correctness, or_signed) {
     big_integer a = 0x55;
     big_integer b = 0xaa;
 
     EXPECT_TRUE((a | (b - 256)) == -1);
 }
 
-TEST(correctness, or_return_value)
-{
+TEST(correctness, or_return_value) {
     big_integer a = 1;
 
     (a |= 2) |= 4;
     EXPECT_EQ(a, 7);
 }
 
-TEST(correctness, xor_)
-{
+TEST(correctness, xor_) {
     big_integer a = 0xaa;
     big_integer b = 0xcc;
 
@@ -384,31 +347,27 @@ TEST(correctness, xor_)
     EXPECT_EQ(big_integer(0x99), c ^ d);
 }
 
-TEST(correctness, xor_signed)
-{
+TEST(correctness, xor_signed) {
     big_integer a = 0xaa;
     big_integer b = 0xcc;
 
     EXPECT_TRUE((a ^ (b - 256)) == (0x66 - 256));
 }
 
-TEST(correctness, xor_return_value)
-{
+TEST(correctness, xor_return_value) {
     big_integer a = 1;
 
     (a ^= 2) ^= 1;
     EXPECT_EQ(a, 2);
 }
 
-TEST(correctness, not_)
-{
+TEST(correctness, not_) {
     big_integer a = 0xaa;
 
     EXPECT_TRUE(~a == (-a - 1));
 }
 
-TEST(correctness, shl_)
-{
+TEST(correctness, shl_) {
     big_integer a = 23;
 
     EXPECT_TRUE((a << 5) == 23 * 32);
@@ -417,16 +376,14 @@ TEST(correctness, shl_)
     EXPECT_TRUE(a == 23 * 32);
 }
 
-TEST(correctness, shl_return_value)
-{
+TEST(correctness, shl_return_value) {
     big_integer a = 1;
 
     (a <<= 2) <<= 1;
     EXPECT_EQ(a, 8);
 }
 
-TEST(correctness, shr_)
-{
+TEST(correctness, shr_) {
     big_integer a = 23;
 
     EXPECT_EQ(a >> 2, 5);
@@ -435,15 +392,13 @@ TEST(correctness, shr_)
     EXPECT_EQ(a, 5);
 }
 
-TEST(correctness, shr_31)
-{
+TEST(correctness, shr_31) {
     big_integer a = 65536;
 
-    EXPECT_EQ((a*a) >> 31, 2);
+    EXPECT_EQ((a * a) >> 31, 2);
 }
 
-TEST(correctness, shr_signed)
-{
+TEST(correctness, shr_signed) {
     big_integer a = -1234;
 
     EXPECT_EQ(a >> 3, -155);
@@ -452,82 +407,89 @@ TEST(correctness, shr_signed)
     EXPECT_EQ(a, -155);
 }
 
-TEST(correctness, shr_return_value)
-{
+TEST(correctness, shr_return_value) {
     big_integer a = 64;
 
     (a >>= 2) >>= 1;
     EXPECT_EQ(a, 8);
 }
 
-TEST(correctness, add_long)
-{
+//void cerr_(big_integer w) {
+//    for (size_t i = 0; i < w.data.size(); i++) {
+//        std::cerr << w.data[i] << " ";
+//    }
+//    std::cerr << std::endl;
+//}
+
+TEST(correctness, add_MY) {
+    big_integer a("340282366920938463463374607431768211456");
+
+    big_integer b("340282366920938463463374607431768211456");
+    big_integer c("680564733841876926926749214863536422912");
+
+    EXPECT_EQ(a + b, c);
+}
+
+TEST(correctness, add_long) {
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
     big_integer c("10000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000");
 
     EXPECT_EQ(a + b, c);
 }
 
-TEST(correctness, add_long_signed)
-{
+TEST(correctness, add_long_signed) {
     big_integer a("-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b( "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+    big_integer b("1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
     EXPECT_EQ(a + b, 0);
 }
 
-TEST(correctness, add_long_signed2)
-{
+TEST(correctness, add_long_signed2) {
     big_integer a("-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
-    big_integer c( "-999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
+    big_integer c("-999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000");
 
     EXPECT_EQ(a + b, c);
 }
 
-TEST(correctness, add_long_pow2)
-{
-    big_integer a( "18446744073709551616");
+TEST(correctness, add_long_pow2) {
+    big_integer a("18446744073709551616");
     big_integer b("-18446744073709551616");
-    big_integer c( "36893488147419103232");
+    big_integer c("36893488147419103232");
 
     EXPECT_EQ(a + a, c);
     EXPECT_EQ(b + c, a);
     EXPECT_EQ(c + b, a);
 }
 
-TEST(correctness, sub_long)
-{
+TEST(correctness, sub_long) {
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
-    big_integer c( "9999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
+    big_integer c("9999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000");
 
     EXPECT_EQ(a - b, c);
 }
 
-TEST(correctness, mul_long)
-{
+TEST(correctness, mul_long) {
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
     big_integer c("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                                                        "00000000000000000000000000000000000000");
+                  "00000000000000000000000000000000000000");
 
     EXPECT_EQ(a * b, c);
 }
 
-TEST(correctness, mul_long_signed)
-{
+TEST(correctness, mul_long_signed) {
     big_integer a("-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
     big_integer c("-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                                                        "00000000000000000000000000000000000000");
+                  "00000000000000000000000000000000000000");
 
     EXPECT_EQ(a * b, c);
 }
 
-TEST(correctness, mul_long_signed1)
-{
+TEST(correctness, mul_long_signed1) {
     big_integer a("-340282366920938463463374607431768211455");
     big_integer c("115792089237316195423570985008687907852589419931798687112530834793049593217025");
 
@@ -535,17 +497,15 @@ TEST(correctness, mul_long_signed1)
     EXPECT_EQ(a * a, c);
 }
 
-TEST(correctness, mul_long_signed2)
-{
+TEST(correctness, mul_long_signed2) {
     big_integer a("-100000000000000000000000000");
     big_integer c("100000000000000000000000000"
-                   "00000000000000000000000000");
+                  "00000000000000000000000000");
 
     EXPECT_EQ(a * a, c);
 }
 
-TEST(correctness, mul_long_pow2)
-{
+TEST(correctness, mul_long_pow2) {
     big_integer a("18446744073709551616");
     big_integer b("340282366920938463463374607431768211456");
     big_integer c("115792089237316195423570985008687907853269984665640564039457584007913129639936");
@@ -554,17 +514,15 @@ TEST(correctness, mul_long_pow2)
     EXPECT_EQ(b * b, c);
 }
 
-TEST(correctness, div_long)
-{
+TEST(correctness, div_long) {
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "100000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
     big_integer c("100000000000000000000000000000000000000000000000000000");
 
     EXPECT_EQ(a / b, c);
 }
 
-TEST(correctness, div_long_MY)
-{
+TEST(correctness, div_long_MY) {
     big_integer a("18446744073709551615");
     big_integer b("18446744073709551615");
     big_integer c("1");
@@ -572,35 +530,32 @@ TEST(correctness, div_long_MY)
     EXPECT_EQ(a / b, c);
 }
 
-TEST(correctness, div_long_signed)
-{
+TEST(correctness, div_long_signed) {
     big_integer a("-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                      "100000000000000000000000000000000000000");
+    big_integer b("100000000000000000000000000000000000000");
     big_integer c("-100000000000000000000000000000000000000000000000000000");
 
     EXPECT_EQ(a / b, c);
 }
 
-TEST(correctness, div_long_signed2)
-{
+TEST(correctness, div_long_signed2) {
     big_integer a("-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-    big_integer b(                                                     "-100000000000000000000000000000000000000");
-    big_integer c( "100000000000000000000000000000000000000000000000000000");
+    big_integer b("-100000000000000000000000000000000000000");
+    big_integer c("100000000000000000000000000000000000000000000000000000");
 
     EXPECT_EQ(a / b, c);
 }
 
-TEST(correctness, negation_long)
-{
-    big_integer a( "10000000000000000000000000000000000000000000000000000");
+
+TEST(correctness, negation_long) {
+    big_integer a("10000000000000000000000000000000000000000000000000000");
     big_integer c("-10000000000000000000000000000000000000000000000000000");
 
     EXPECT_EQ(-a, c);
     EXPECT_EQ(a, -c);
 }
 
-TEST(correctness, shl_long)
-{
+TEST(correctness, shl_long) {
     EXPECT_EQ(big_integer("1091951238831590836520041079875950759639875963123939936"),
               big_integer("34123476213487213641251283746123461238746123847623123") << 5);
 
@@ -611,8 +566,7 @@ TEST(correctness, shl_long)
               big_integer("12341236412857618761234871264871264128736412836643859238479") << 31);
 }
 
-TEST(correctness, shr_long)
-{
+TEST(correctness, shr_long) {
     EXPECT_EQ(big_integer("4730073393008085198307104580698364137020387111323398632330851"),
               big_integer("151362348576258726345827346582347652384652387562348756234587245") >> 5);
 
@@ -624,8 +578,7 @@ TEST(correctness, shr_long)
 
 }
 
-TEST(correctness, string_conv)
-{
+TEST(correctness, string_conv) {
     EXPECT_EQ(to_string(big_integer("100")), "100");
     EXPECT_EQ(to_string(big_integer("0100")), "100");
     EXPECT_EQ(to_string(big_integer("0")), "0");
@@ -633,14 +586,19 @@ TEST(correctness, string_conv)
     EXPECT_EQ(to_string(big_integer("-1000000000000000")), "-1000000000000000");
 }
 
+TEST(correctness, YANNY) {
+    big_integer a("-13096798932270914324441677652105721220785596314179326280495355221537978081752186191060338905108904450315530484959493050212519874002093974510098286440657791801761420936208137789764182067844558946727941380982781138942891166573502470538617329345600673536593901529915392");
+    big_integer b("-305005003213142431281853497804086392533640898508875286232744350733669956863547293021369181241111130702551110489336239162623281385664853442528817196490847285344779079244570097394065967874812826052182329888911008716392774560284672");
+    big_integer c("3994589200419170586772882484407141510670498990450886225171718352968103963434890279729433079142280312856441014557825343130326560631398978641725396764416252265055408264942718192300935103065840540950348210882445261409246482351422408616783980564997286736577178290987328912457239086357161683386413666794278821066949388716644744621134013795134676178123255611823985838947919691209386014423358040140900441157448851297129171144204133359387744050873752734621495623395140182544901363661776066351594471424");
+    EXPECT_TRUE(a * b / b == a);
+    EXPECT_TRUE(a * b / a == b);
+}
 
-namespace
-{
+namespace {
     unsigned const number_of_iterations = 10;
     size_t const number_of_multipliers = 1000;
 
-    int myrand()
-    {
+    int myrand() {
         int val = rand() - RAND_MAX / 2;
         if (val != 0)
             return val;
@@ -649,10 +607,8 @@ namespace
     }
 }
 
-TEST(correctness, mul_div_randomized)
-{
-    for (unsigned itn = 0; itn != number_of_iterations; ++itn)
-    {
+TEST(correctness, mul_div_randomized) {
+    for (unsigned itn = 0; itn != number_of_iterations; ++itn) {
         std::vector<int> multipliers;
 
         for (size_t i = 0; i != number_of_multipliers; ++i)
@@ -672,42 +628,49 @@ TEST(correctness, mul_div_randomized)
     }
 }
 
-namespace
-{
-    template <typename T>
-    void erase_unordered(std::vector<T>& v, typename std::vector<T>::iterator pos)
-    {
+TEST(correctness, mul_div_MY) {
+    big_integer a("57896044618658097711785492504343953926634992332820282019728792003956564819968");
+    big_integer b("57896044618658097711785492504343953926634992332820282019728792003956564819968");
+    big_integer c = b * a * a * b * b * a * a * a / a / a / b / b / a / a / a / b;
+    big_integer d = a * b * b * b * a * a * a * a / a / a / b / b / a / b / a / a;
+    assert(c == d);
+    EXPECT_EQ(b * a * a * b * b * a * a * a / a / a / b / b / a / a / a / b,
+              a * b * b * b * a * a * a * a / a / a / b / b / a / b / a / a);
+}
+
+namespace {
+    template<typename T>
+    void erase_unordered(std::vector<T> &v, typename std::vector<T>::iterator pos) {
         std::swap(v.back(), *pos);
         v.pop_back();
     }
 
-    template <typename T>
-    T extract_random_element(std::vector<T>& v)
-    {
+    template<typename T>
+    T extract_random_element(std::vector<T> &v) {
         size_t index = rand() % v.size();
         T copy = v[index];
         erase_unordered(v, v.begin() + index);
         return copy;
     }
 
-    template <typename T>
-    void merge_two(std::vector<T>& v)
-    {
+    template<typename T>
+    void merge_two(std::vector<T> &v) {
         assert(v.size() >= 2);
 
         T a = extract_random_element(v);
         T b = extract_random_element(v);
 
         T ab = a * b;
+        assert(ab / a == b);
+        assert(ab / b == a);
         ASSERT_TRUE(ab / a == b);
         ASSERT_TRUE(ab / b == a);
 
         v.push_back(ab);
     }
 
-    template <typename T>
-    T merge_all(std::vector<T> v)
-    {
+    template<typename T>
+    T merge_all(std::vector<T> v) {
         assert(!v.empty());
 
         while (v.size() >= 2)
@@ -717,10 +680,8 @@ namespace
     }
 }
 
-TEST(correctness, mul_merge_randomized)
-{
-    for (unsigned itn = 0; itn != number_of_iterations; ++itn)
-    {
+TEST(correctness, mul_merge_randomized) {
+    for (unsigned itn = 0; itn != number_of_iterations; ++itn) {
         std::vector<big_integer> x;
         for (size_t i = 0; i != number_of_multipliers; ++i)
             x.push_back(myrand());
@@ -732,14 +693,11 @@ TEST(correctness, mul_merge_randomized)
     }
 }
 
-namespace
-{
-    big_integer rand_big(size_t size)
-    {
+namespace {
+    big_integer rand_big(size_t size) {
         big_integer result = rand();
 
-        for (size_t i = 0; i != size; ++i)
-        {
+        for (size_t i = 0; i != size; ++i) {
             result *= RAND_MAX;
             result += rand();
         }
@@ -748,10 +706,8 @@ namespace
     }
 }
 
-TEST(correctness, div_randomized)
-{
-    for (size_t itn = 0; itn != number_of_iterations * number_of_multipliers; ++itn)
-    {
+TEST(correctness, div_randomized) {
+    for (size_t itn = 0; itn != number_of_iterations * number_of_multipliers; ++itn) {
         big_integer divident = rand_big(10);
         big_integer divisor = rand_big(6);
         big_integer quotient = divident / divisor;
@@ -762,8 +718,7 @@ TEST(correctness, div_randomized)
     }
 }
 
-TEST(correctness, mod_)
-{
+TEST(correctness, mod_) {
     big_integer a("694786351186771371565623568572");
     big_integer b("848791094765635183251209148058");
     big_integer c("694786351186771371565623568572");
