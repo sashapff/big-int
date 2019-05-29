@@ -633,7 +633,6 @@ TEST(correctness, mul_div_MY) {
     big_integer b("57896044618658097711785492504343953926634992332820282019728792003956564819968");
     big_integer c = b * a * a * b * b * a * a * a / a / a / b / b / a / a / a / b;
     big_integer d = a * b * b * b * a * a * a * a / a / a / b / b / a / b / a / a;
-    assert(c == d);
     EXPECT_EQ(b * a * a * b * b * a * a * a / a / a / b / b / a / a / a / b,
               a * b * b * b * a * a * a * a / a / a / b / b / a / b / a / a);
 }
