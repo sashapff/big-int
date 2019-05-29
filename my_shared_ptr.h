@@ -9,8 +9,6 @@ struct ptr_body {
     T *ptr;
     size_t cnt;
 
-    ptr_body() = delete;
-
     ptr_body(T *ptr_) {
         ptr = ptr_;
         cnt = 1;
@@ -79,13 +77,6 @@ public:
         return ptr->ptr[i];
     }
 
-//    T* get() {
-//        return ptr ? ptr->ptr : nullptr;
-//    }
-//
-//    T const* get() const {
-//        return ptr ? ptr->ptr : nullptr;
-//    }
 };
 
 #endif //BIGINT_MY_SHARED_PTR_H

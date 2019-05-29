@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/alexandra/Desktop/big_int/main.cpp
+iostream
+-
+my_vector.h
+/Users/alexandra/Desktop/big_int/my_vector.h
+
+/Users/alexandra/Desktop/big_int/my_shared_ptr.h
+cstddef
+-
+cassert
+-
+
+/Users/alexandra/Desktop/big_int/my_vector.h
+cstddef
+-
+memory
+-
+my_shared_ptr.h
+/Users/alexandra/Desktop/big_int/my_shared_ptr.h
+

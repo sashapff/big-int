@@ -52,13 +52,6 @@ big_integer &big_integer::operator=(big_integer const &other) {
     return *this;
 }
 
-big_integer &big_integer::operator=(int a) {
-    big_integer q(a);
-    data.copy_on_write();
-    *this = q;
-    return *this;
-}
-
 uint32_t &big_integer::operator[](size_t const i) {
     return data[i];
 }

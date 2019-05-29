@@ -5,6 +5,7 @@
 #include <memory>
 #include "my_shared_ptr.h"
 
+
 template<typename T>
 class my_vector {
     size_t size_ = 0;
@@ -14,10 +15,6 @@ class my_vector {
 public:
 
     my_vector() = default;
-
-//    ~my_vector() = default;
-
-    my_vector(my_vector const &) = delete;
 
     my_vector &operator=(const my_vector &rhs) {
         if (this == &rhs) {
@@ -49,20 +46,19 @@ public:
 
     void pop_back() {
         size_--;
-//        data_[size_].~T();
     }
 
     void resize(size_t new_size_) {
-        if (new_size_ <= alloc_) {
+        if (new_size_ < alloc_) {
             size_ = new_size_;
             return;
         }
         T *new_data_ = static_cast<T *>(operator new(new_size_ * sizeof(T)));
         for (size_t i = 0; i < size_; i++) {
-            new(new_data_ + i) T(data_[i]);
+            new_data_[i] = data_[i];
         }
         for (size_t i = size_; i < new_size_; i++) {
-            new(new_data_ + i) T(0);
+            new_data_[i] = 0;
         }
         my_shared_ptr<T> new_ptr_(new_data_);
         data_ = new_ptr_;
@@ -82,7 +78,6 @@ public:
     }
 
     void copy_on_write() {
-        assert(size_ <= alloc_);
         T *new_data_ = static_cast<T *>(operator new(size_ * sizeof(T)));
         for (size_t i = 0; i < size_; ++i) {
             size_t t = data_[i];
