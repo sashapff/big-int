@@ -376,7 +376,7 @@ const int len = 32;
 
 void big_integer::add(const big_integer &a, size_t pos) {
     uint32_t carry = 0;
-    size_t length = std::max(this->size(), a.size() + pos);
+    size_t length = std::max(size(), a.size() + pos);
     data.resize(length);
     for (size_t i = 0; i < a.size(); i++) {
         uint64_t sum = (uint64_t) data[i + pos] + a.data[i] + carry;
@@ -460,13 +460,13 @@ void big_integer::shift_left(int rhs) {
 void big_integer::shift_right(int rhs) {
     size_t number = rhs / len;
     int small_shift = rhs - number * rhs;
-    size_t length = this->size() + number;
+    size_t length = size() + number;
     data.resize(length);
     for (size_t i = (size_t) number; i < length; i++) {
         if (i >= number + 1) {
             data[i - number - 1] += ((block * data[i]) >> (small_shift));
         }
-        this->data[i - number] = (data[i] >> small_shift);
+        data[i - number] = (data[i] >> small_shift);
     }
     for (size_t i = length - number; i < length; i++) {
         data[i] = 0;
