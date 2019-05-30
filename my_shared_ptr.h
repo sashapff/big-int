@@ -43,7 +43,8 @@ public:
         }
     }
 
-    my_shared_ptr(my_shared_ptr const& rhs) = delete;
+    my_shared_ptr(my_shared_ptr const &rhs) = delete;
+
     my_shared_ptr(my_shared_ptr &rhs) = delete;
 
     my_shared_ptr &operator=(const my_shared_ptr &rhs) {
@@ -75,6 +76,14 @@ public:
 
     T &operator[](size_t i) const {
         return ptr->ptr[i];
+    }
+
+    T *get() const {
+        return (ptr == nullptr) ? nullptr : ptr->ptr;
+    }
+
+    bool is_unique() {
+        return ptr->cnt == 1;
     }
 
 };
