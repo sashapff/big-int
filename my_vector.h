@@ -22,6 +22,15 @@ class my_vector {
         }
     }
 
+    void allocation(size_t new_alloc_) {
+        T *new_data_ = static_cast<T *>(operator new(new_alloc_ * sizeof(T)));
+        for (size_t i = 0; i < size_; i++) {
+            new_data_[i] = data_[i];
+        }
+        my_shared_ptr<T> new_ptr_(new_data_);
+        data_ = new_ptr_;
+    }
+
 public:
 
     my_vector() = default;
@@ -57,16 +66,18 @@ public:
     }
 
     void push_back(T value) {
+        if (size_ < max_size) {
+            small_[size_++] = value;
+            return;
+        }
         if (size_ == max_size && data_.get() == nullptr) {
             convert();
         }
-        size_t old = size_;
         if (size_ == alloc_) {
             alloc_ = alloc_ ? (alloc_ << 1) : 8;
-            resize(alloc_);
+            allocation(alloc_);
         }
-        data_[old++] = value;
-        size_ = old;
+        data_[size_++] = value;
     }
 
     void pop_back() {
@@ -74,7 +85,7 @@ public:
     }
 
     void resize(size_t new_size_) {
-        if (new_size_ < alloc_) {
+        if (new_size_ <= alloc_) {
             size_ = new_size_;
             if (new_size_ <= max_size && data_.get() != nullptr) {
                 for (size_t i = 0; i < new_size_; i++) {
@@ -83,15 +94,10 @@ public:
             }
             return;
         }
-        T *new_data_ = static_cast<T *>(operator new(new_size_ * sizeof(T)));
-        for (size_t i = 0; i < size_; i++) {
-            new_data_[i] = data_[i];
-        }
+        allocation(new_size_);
         for (size_t i = size_; i < new_size_; i++) {
-            new_data_[i] = 0;
+            data_[i] = 0;
         }
-        my_shared_ptr<T> new_ptr_(new_data_);
-        data_ = new_ptr_;
         alloc_ = size_ = new_size_;
     }
 

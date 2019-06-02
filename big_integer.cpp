@@ -4,7 +4,6 @@
 #include <stdexcept>
 
 big_integer::big_integer() {
-    data.resize(0);
     sign = false;
 }
 
@@ -14,7 +13,6 @@ big_integer::big_integer(big_integer const &other) {
 }
 
 big_integer::big_integer(int a) {
-    *this = big_integer();
     if (a != 0) {
         data.resize(1);
         data[0] = static_cast<uint32_t>(a >= 0 ? a : 0ll - a);
@@ -24,9 +22,8 @@ big_integer::big_integer(int a) {
 
 big_integer::big_integer(std::string const &str) {
     if (str.empty()) {
-        *this = big_integer();
+        return;
     }
-    *this = big_integer();
     size_t ind = 0;
     sign = false;
     if (str[0] == '-' || str[0] == '+') {
@@ -40,7 +37,6 @@ big_integer::big_integer(std::string const &str) {
 }
 
 big_integer::~big_integer() {
-    data.resize(0);
     sign = false;
 }
 

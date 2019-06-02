@@ -660,8 +660,6 @@ namespace {
         T b = extract_random_element(v);
 
         T ab = a * b;
-        assert(ab / a == b);
-        assert(ab / b == a);
         ASSERT_TRUE(ab / a == b);
         ASSERT_TRUE(ab / b == a);
 

@@ -14,6 +14,9 @@ struct big_integer
     big_integer(big_integer const& other);
     big_integer(int a);
     explicit big_integer(std::string const& str);
+
+    big_integer(const my_vector<uint32_t> &data, bool sign);
+
     ~big_integer();
 
     big_integer& operator=(big_integer const& other);
